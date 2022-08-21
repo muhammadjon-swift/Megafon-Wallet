@@ -17,23 +17,26 @@ class HistoryViewController: UIViewController {
         transactionsTableView.delegate = self
         transactionsTableView.dataSource = self
         
-        transactionsTableView.rowHeight = 69
-
+        transactionsTableView.rowHeight = 75
         // Do any additional setup after loading the view.
     }
+    
 
     
 }
 
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 9
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = transactionsTableView.dequeueReusableCell(withIdentifier: K.HistoryVCTableViewCell, for: indexPath)
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 0.3
         return cell
     }
+    
     
     
 }

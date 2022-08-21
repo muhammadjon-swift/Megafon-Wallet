@@ -10,19 +10,20 @@ import UIKit
 class AccountViewController: UIViewController {
 
     @IBOutlet weak var savingsCollectionView: UICollectionView!
-    
     @IBOutlet weak var userTableView: UITableView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         savingsCollectionView.delegate = self
         savingsCollectionView.dataSource = self
         
         userTableView.delegate = self
         userTableView.dataSource = self
         
-        userTableView.rowHeight = 45
+        userTableView.rowHeight = 75
+        
         // Do any additional setup after loading the view.
     }
 
@@ -58,14 +59,17 @@ extension AccountViewController: UICollectionViewDelegate, UICollectionViewDataS
 extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Profile \(section)"
+        return "Settings \(section)"
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = userTableView.dequeueReusableCell(withIdentifier: K.AccountVCTableViewCell, for: indexPath)
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 0.3
         return cell
     }
     
