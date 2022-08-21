@@ -35,7 +35,7 @@ extension AccountViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = savingsCollectionView.dequeueReusableCell(withReuseIdentifier: "accountCell", for: indexPath)
+        let cell = savingsCollectionView.dequeueReusableCell(withReuseIdentifier: K.AccountVCCollectionViewCell, for: indexPath)
         
         //MARK: - Just to make corners rounded and add shadow
         let cornerRadius: CGFloat = 5.0
@@ -61,11 +61,11 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         return "Profile \(section)"
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = userTableView.dequeueReusableCell(withIdentifier: "accountTableViewCell", for: indexPath)
+        let cell = userTableView.dequeueReusableCell(withIdentifier: K.AccountVCTableViewCell, for: indexPath)
         return cell
     }
     
