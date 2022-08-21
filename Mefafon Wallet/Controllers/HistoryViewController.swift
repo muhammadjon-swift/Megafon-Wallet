@@ -17,14 +17,13 @@ class HistoryViewController: UIViewController {
         transactionsTableView.delegate = self
         transactionsTableView.dataSource = self
         
-        transactionsTableView.rowHeight = 75
+        transactionsTableView.rowHeight = 70
         // Do any additional setup after loading the view.
     }
     
-
-    
 }
 
+//MARK: - UITableView Delegate & Datasource Methods
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 9

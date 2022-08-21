@@ -10,4 +10,6 @@ struct K {
     static let AccountVCCollectionViewCell = "accountCell"
     static let AccountVCTableViewCell = "accountTableViewCell"
     static let HistoryVCTableViewCell = "transactionsCell"
+    static let TransferVCTableViewCell = "paymentTableViewCell"
+    static let TransferVCCollectionViewCell = "paymentsCollectionViewCell"
 }

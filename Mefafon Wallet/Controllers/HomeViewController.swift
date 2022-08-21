@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
 
 }
 
+//MARK: - UICollectionView Delegate & Datasource Methods
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count

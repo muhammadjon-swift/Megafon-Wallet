@@ -22,7 +22,7 @@ class AccountViewController: UIViewController {
         userTableView.delegate = self
         userTableView.dataSource = self
         
-        userTableView.rowHeight = 75
+        userTableView.rowHeight = 65
         
         // Do any additional setup after loading the view.
     }
@@ -55,11 +55,11 @@ extension AccountViewController: UICollectionViewDelegate, UICollectionViewDataS
     
 }
 
-
+//MARK: - UITableView Delegate & Datasource Methods
 extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Settings \(section)"
+        return "Settings"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
