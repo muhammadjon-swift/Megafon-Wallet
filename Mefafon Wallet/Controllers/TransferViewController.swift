@@ -12,6 +12,9 @@ class TransferViewController: UIViewController {
     @IBOutlet weak var paymentsTableVIew: UITableView!
     @IBOutlet weak var paymentsCollectionView: UICollectionView!
     
+    var theViewModels = [ItemsCollectionViewCellViewModel]()
+    var items = [Items]()
+    
     
     struct Service {
         let title: String
@@ -38,8 +41,22 @@ class TransferViewController: UIViewController {
         
         paymentsCollectionView.delegate = self
         paymentsCollectionView.dataSource = self
-
-        // Do any additional setup after loading the view.
+        
+        //MARK: - APICaller implemation
+        APICaller.shared.fetchData { [weak self] result in
+            switch result {
+            case .success(let items):
+                self?.items = items
+                
+                self?.theViewModels = items.compactMap({ItemsCollectionViewCellViewModel(description: $0.description, imageURL: $0.image)})
+                
+                DispatchQueue.main.async {
+                    self?.paymentsCollectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
 
@@ -69,11 +86,25 @@ extension TransferViewController: UITableViewDelegate, UITableViewDataSource {
 extension TransferViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return theViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = paymentsCollectionView.dequeueReusableCell(withReuseIdentifier: K.TransferVCCollectionViewCell, for: indexPath)
+        let cell = paymentsCollectionView.dequeueReusableCell(withReuseIdentifier: K.TransferVCCollectionViewCell, for: indexPath) as! TransferCollectionViewCell
+        cell.configure(with: theViewModels[indexPath.row])
+        
+        //MARK: - Just to make corners rounded and add shadow
+        let cornerRadius: CGFloat = 5.0
+        cell.contentView.layer.cornerRadius = cornerRadius
+        cell.contentView.layer.masksToBounds = true;
+        cell.layer.cornerRadius = cornerRadius
+        cell.layer.shadowRadius = 2.0
+        cell.layer.shadowOpacity = 0.10
+        cell.layer.masksToBounds = false;
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 5)
+        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds,cornerRadius: cornerRadius).cgPath
+        
         return cell
     }
     
