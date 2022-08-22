@@ -43,9 +43,9 @@ class TransferCollectionViewCell: UICollectionViewCell {
 //                    self.itemImage.image = UIImage(data: loadededItems![6].image!)
                     let theImage = UIImage(data: data)
                     
-//                    let jpegImageData = theImage?.jpegData(compressionQuality: 1.0)
-                    
-//                    self.saveItems()
+                    let jpegImageData = theImage?.jpegData(compressionQuality: 1.0)
+                    localItems.image = jpegImageData
+                    self.saveItems()
                 }
             }
             task.resume()
