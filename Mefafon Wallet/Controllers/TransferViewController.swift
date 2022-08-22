@@ -6,11 +6,15 @@
 //
 
 import UIKit
+typealias PeopleDataSource = UICollectionViewDiffableDataSource<Manager.Section, People>
 
 class TransferViewController: UIViewController {
     
     @IBOutlet weak var paymentsTableVIew: UITableView!
     @IBOutlet weak var paymentsCollectionView: UICollectionView!
+    @IBOutlet weak var quickSendCollectionView: UICollectionView!
+    
+    private var dataSource: PeopleDataSource!
     
     var theViewModels = [ItemsCollectionViewCellViewModel]()
     var items = [Items]()
@@ -34,6 +38,7 @@ class TransferViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
         
         paymentsTableVIew.delegate = self
         paymentsTableVIew.dataSource = self
@@ -42,6 +47,8 @@ class TransferViewController: UIViewController {
         paymentsCollectionView.delegate = self
         paymentsCollectionView.dataSource = self
         
+        
+        quickSendCollectionView.delegate = self
         //MARK: - APICaller implemation
         APICaller.shared.fetchData { [weak self] result in
             switch result {
@@ -59,7 +66,95 @@ class TransferViewController: UIViewController {
         }
     }
     
+    private func setupView() {
+        
+        quickSendCollectionView.collectionViewLayout = configureCollectionViewLayout()
+        configureDataSource()
+        configureSnapshot()
+    }
+    
 
+}
+
+extension TransferViewController {
+    func configureCollectionViewLayout() -> UICollectionViewCompositionalLayout {
+        let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            var section: NSCollectionLayoutSection?
+            
+            switch sectionIndex {
+            case 0:
+                section = self.getPreviewSection()
+                
+            default:
+                section = self.getPreviewSection()
+            }
+            return section
+        
+    }
+        return UICollectionViewCompositionalLayout(sectionProvider:  sectionProvider)
+
+    }
+    
+    private func getPreviewSection() -> NSCollectionLayoutSection? {
+        //create item
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        
+        //create group
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3), heightDimension: .fractionalHeight(0.9))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        //create section
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.interGroupSpacing = CGFloat(0.1)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+                
+        return section
+    }
+}
+
+// MARK: - Diffable Data Source -
+
+extension TransferViewController {
+    
+    func configureDataSource() {
+        dataSource = PeopleDataSource(collectionView: quickSendCollectionView) { (collectionView: UICollectionView, indexPath: IndexPath, people: People) -> UICollectionViewCell? in
+            
+            let reuseIdentifier: String
+            
+            switch indexPath.section {
+            case 0: reuseIdentifier = TransferVCQuickCollectionViewCell.reuseIdentifier
+            default:
+                reuseIdentifier = TransferVCQuickCollectionViewCell.reuseIdentifier
+            }
+            
+            guard let cell = self.quickSendCollectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as?  PeopleCell else {
+                return nil
+            }
+            
+            let section = Manager.Section.allCases[indexPath.section]
+            
+            cell.showPeople(people: Manager.people[section]?[indexPath.item])
+            
+            return cell
+        }
+    }
+    
+    
+    func configureSnapshot() {
+        var currentSnapshot = NSDiffableDataSourceSnapshot<Manager.Section, People> ()
+        
+        Manager.Section.allCases.forEach{ collection in
+            currentSnapshot.appendSections([collection])
+            if let people = Manager.people[collection] {
+                currentSnapshot.appendItems(people)
+            }
+        }
+        
+        dataSource.apply(currentSnapshot, animatingDifferences: false)
+    }
 }
 
 //MARK: - UITableView Delegate & Datasource Methods

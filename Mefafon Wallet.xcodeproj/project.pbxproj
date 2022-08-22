@@ -15,6 +15,10 @@
 		7000F14028B2384100153417 /* TransferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F13F28B2384100153417 /* TransferTableViewCell.swift */; };
 		7000F14228B2B3AE00153417 /* TransferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F14128B2B3AE00153417 /* TransferCollectionViewCell.swift */; };
 		7000F14428B2B5DA00153417 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F14328B2B5DA00153417 /* APICaller.swift */; };
+		7000F14E28B42DA600153417 /* TransferVCQuickCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F14D28B42DA600153417 /* TransferVCQuickCollectionViewCell.swift */; };
+		7000F15028B42DFC00153417 /* PeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F14F28B42DFC00153417 /* PeopleCell.swift */; };
+		7000F15228B42E2400153417 /* People.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F15128B42E2400153417 /* People.swift */; };
+		7000F15428B4312900153417 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F15328B4312900153417 /* Manager.swift */; };
 		709BF11C28AE71FF00783EF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11B28AE71FF00783EF6 /* AppDelegate.swift */; };
 		709BF11E28AE71FF00783EF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11D28AE71FF00783EF6 /* SceneDelegate.swift */; };
 		709BF12028AE71FF00783EF6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11F28AE71FF00783EF6 /* HomeViewController.swift */; };
@@ -32,6 +36,10 @@
 		7000F13F28B2384100153417 /* TransferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferTableViewCell.swift; sourceTree = "<group>"; };
 		7000F14128B2B3AE00153417 /* TransferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferCollectionViewCell.swift; sourceTree = "<group>"; };
 		7000F14328B2B5DA00153417 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		7000F14D28B42DA600153417 /* TransferVCQuickCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferVCQuickCollectionViewCell.swift; sourceTree = "<group>"; };
+		7000F14F28B42DFC00153417 /* PeopleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleCell.swift; sourceTree = "<group>"; };
+		7000F15128B42E2400153417 /* People.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = People.swift; sourceTree = "<group>"; };
+		7000F15328B4312900153417 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		709BF11828AE71FF00783EF6 /* Mefafon Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mefafon Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		709BF11B28AE71FF00783EF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		709BF11D28AE71FF00783EF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +85,8 @@
 			isa = PBXGroup;
 			children = (
 				7000F14328B2B5DA00153417 /* APICaller.swift */,
+				7000F15128B42E2400153417 /* People.swift */,
+				7000F15328B4312900153417 /* Manager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -87,6 +97,8 @@
 				7000F13728AFF1F600153417 /* MyCollectionViewCell.swift */,
 				7000F13F28B2384100153417 /* TransferTableViewCell.swift */,
 				7000F14128B2B3AE00153417 /* TransferCollectionViewCell.swift */,
+				7000F14D28B42DA600153417 /* TransferVCQuickCollectionViewCell.swift */,
+				7000F14F28B42DFC00153417 /* PeopleCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -198,13 +210,17 @@
 				709BF11C28AE71FF00783EF6 /* AppDelegate.swift in Sources */,
 				7000F14228B2B3AE00153417 /* TransferCollectionViewCell.swift in Sources */,
 				7000F13A28B00C5800153417 /* AccountViewController.swift in Sources */,
+				7000F15428B4312900153417 /* Manager.swift in Sources */,
 				7000F13828AFF1F600153417 /* MyCollectionViewCell.swift in Sources */,
 				709BF11E28AE71FF00783EF6 /* SceneDelegate.swift in Sources */,
+				7000F15228B42E2400153417 /* People.swift in Sources */,
 				7000F14028B2384100153417 /* TransferTableViewCell.swift in Sources */,
 				7000F13628AF3F8300153417 /* HistoryViewController.swift in Sources */,
+				7000F14E28B42DA600153417 /* TransferVCQuickCollectionViewCell.swift in Sources */,
 				7000F14428B2B5DA00153417 /* APICaller.swift in Sources */,
 				7000F13428AF3F7300153417 /* TransferViewController.swift in Sources */,
 				7000F13E28B1F1E000153417 /* Constants.swift in Sources */,
+				7000F15028B42DFC00153417 /* PeopleCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
