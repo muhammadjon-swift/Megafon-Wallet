@@ -15,6 +15,7 @@
 		7000F14028B2384100153417 /* TransferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F13F28B2384100153417 /* TransferTableViewCell.swift */; };
 		7000F14228B2B3AE00153417 /* TransferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F14128B2B3AE00153417 /* TransferCollectionViewCell.swift */; };
 		7000F14428B2B5DA00153417 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F14328B2B5DA00153417 /* APICaller.swift */; };
+		7000F14C28B3C14900153417 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7000F14B28B3C14900153417 /* Kingfisher */; };
 		709BF11C28AE71FF00783EF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11B28AE71FF00783EF6 /* AppDelegate.swift */; };
 		709BF11E28AE71FF00783EF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11D28AE71FF00783EF6 /* SceneDelegate.swift */; };
 		709BF12028AE71FF00783EF6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11F28AE71FF00783EF6 /* HomeViewController.swift */; };
@@ -47,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7000F14C28B3C14900153417 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +141,9 @@
 			dependencies = (
 			);
 			name = "Mefafon Wallet";
+			packageProductDependencies = (
+				7000F14B28B3C14900153417 /* Kingfisher */,
+			);
 			productName = "Mefafon Wallet";
 			productReference = 709BF11828AE71FF00783EF6 /* Mefafon Wallet.app */;
 			productType = "com.apple.product-type.application";
@@ -167,6 +172,9 @@
 				Base,
 			);
 			mainGroup = 709BF10F28AE71FF00783EF6;
+			packageReferences = (
+				7000F14A28B3C14900153417 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 709BF11928AE71FF00783EF6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -420,6 +428,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7000F14A28B3C14900153417 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.3.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7000F14B28B3C14900153417 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7000F14A28B3C14900153417 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 709BF11028AE71FF00783EF6 /* Project object */;
 }

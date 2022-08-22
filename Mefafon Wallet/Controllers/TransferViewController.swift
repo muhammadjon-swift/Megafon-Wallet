@@ -34,7 +34,6 @@ class TransferViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         paymentsTableVIew.delegate = self
         paymentsTableVIew.dataSource = self
         paymentsTableVIew.rowHeight = 60
@@ -54,6 +53,7 @@ class TransferViewController: UIViewController {
                     self?.paymentsCollectionView.reloadData()
                 }
             case .failure(let error):
+                print("------------------------------------------")
                 print(error)
             }
         }
@@ -86,11 +86,13 @@ extension TransferViewController: UITableViewDelegate, UITableViewDataSource {
 extension TransferViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
         return theViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = paymentsCollectionView.dequeueReusableCell(withReuseIdentifier: K.TransferVCCollectionViewCell, for: indexPath) as! TransferCollectionViewCell
+
         cell.configure(with: theViewModels[indexPath.row])
         
         //MARK: - Just to make corners rounded and add shadow

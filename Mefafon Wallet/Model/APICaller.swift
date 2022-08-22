@@ -47,7 +47,6 @@ class APICaller {
 }
 
 
-
 //MARK: - Models
 struct Items: Codable {
     let description: String
