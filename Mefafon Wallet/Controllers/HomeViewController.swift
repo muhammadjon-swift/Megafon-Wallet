@@ -17,6 +17,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+             print(urls[urls.count-1] as URL)
         // Do any additional setup after loading the view.
     }
 

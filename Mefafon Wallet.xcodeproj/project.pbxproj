@@ -15,6 +15,7 @@
 		7000F14028B2384100153417 /* TransferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F13F28B2384100153417 /* TransferTableViewCell.swift */; };
 		7000F14228B2B3AE00153417 /* TransferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F14128B2B3AE00153417 /* TransferCollectionViewCell.swift */; };
 		7000F14428B2B5DA00153417 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F14328B2B5DA00153417 /* APICaller.swift */; };
+		7000F14928B36C0D00153417 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7000F14728B36C0D00153417 /* Model.xcdatamodeld */; };
 		709BF11C28AE71FF00783EF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11B28AE71FF00783EF6 /* AppDelegate.swift */; };
 		709BF11E28AE71FF00783EF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11D28AE71FF00783EF6 /* SceneDelegate.swift */; };
 		709BF12028AE71FF00783EF6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11F28AE71FF00783EF6 /* HomeViewController.swift */; };
@@ -32,6 +33,7 @@
 		7000F13F28B2384100153417 /* TransferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferTableViewCell.swift; sourceTree = "<group>"; };
 		7000F14128B2B3AE00153417 /* TransferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferCollectionViewCell.swift; sourceTree = "<group>"; };
 		7000F14328B2B5DA00153417 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		7000F14828B36C0D00153417 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		709BF11828AE71FF00783EF6 /* Mefafon Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mefafon Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		709BF11B28AE71FF00783EF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		709BF11D28AE71FF00783EF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				7000F14328B2B5DA00153417 /* APICaller.swift */,
+				7000F14728B36C0D00153417 /* Model.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				7000F14428B2B5DA00153417 /* APICaller.swift in Sources */,
 				7000F13428AF3F7300153417 /* TransferViewController.swift in Sources */,
 				7000F13E28B1F1E000153417 /* Constants.swift in Sources */,
+				7000F14928B36C0D00153417 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +424,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7000F14728B36C0D00153417 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7000F14828B36C0D00153417 /* Model.xcdatamodel */,
+			);
+			currentVersion = 7000F14828B36C0D00153417 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 709BF11028AE71FF00783EF6 /* Project object */;
 }

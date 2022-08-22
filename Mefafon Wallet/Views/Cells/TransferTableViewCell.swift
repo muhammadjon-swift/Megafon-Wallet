@@ -11,6 +11,7 @@ class TransferTableViewCell: UITableViewCell {
     
     @IBOutlet weak var serviceName: UILabel!
     @IBOutlet weak var serviceImage: UIImageView!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

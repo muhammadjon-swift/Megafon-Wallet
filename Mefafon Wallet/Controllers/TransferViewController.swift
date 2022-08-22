@@ -12,9 +12,14 @@ class TransferViewController: UIViewController {
     @IBOutlet weak var paymentsTableVIew: UITableView!
     @IBOutlet weak var paymentsCollectionView: UICollectionView!
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     var theViewModels = [ItemsCollectionViewCellViewModel]()
     var items = [Items]()
     
+    var loadedItems = [LocalItems]()
+    
+    var networkISOff = false
     
     struct Service {
         let title: String
@@ -31,7 +36,6 @@ class TransferViewController: UIViewController {
     Service(title: "Gosuslugi", imageName: "mail.stack", color: UIColor(hexString: "4C4EDC")!),
     ]
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +46,8 @@ class TransferViewController: UIViewController {
         paymentsCollectionView.delegate = self
         paymentsCollectionView.dataSource = self
         
-        //MARK: - APICaller implemation
+        
+        //MARK: - APICaller implemantion
         APICaller.shared.fetchData { [weak self] result in
             switch result {
             case .success(let items):
@@ -53,9 +58,26 @@ class TransferViewController: UIViewController {
                 DispatchQueue.main.async {
                     self?.paymentsCollectionView.reloadData()
                 }
+
             case .failure(let error):
+                self?.networkISOff = true
+                self?.loadedItems = self!.loadItems()!
+                print("Network IS OF_____________---------------------------")
+
                 print(error)
+                
             }
+        }
+    }
+    
+    func loadItems() -> [LocalItems]? {
+        let req = (LocalItems.fetchRequest())
+        do {
+            let loadedItems = try context.fetch(req)
+            return loadedItems
+        } catch {
+            print("There was an error \(error)")
+            return nil
         }
     }
     
@@ -86,12 +108,21 @@ extension TransferViewController: UITableViewDelegate, UITableViewDataSource {
 extension TransferViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if networkISOff {
+            return 2
+        }
         return theViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = paymentsCollectionView.dequeueReusableCell(withReuseIdentifier: K.TransferVCCollectionViewCell, for: indexPath) as! TransferCollectionViewCell
-        cell.configure(with: theViewModels[indexPath.row])
+        if networkISOff {
+//            cell.failCase(with: loadedItems)
+            print("Network IS OF_____________---------------------------")
+        } else {
+            cell.configure(with: theViewModels[indexPath.row])
+        }
+        
         
         //MARK: - Just to make corners rounded and add shadow
         let cornerRadius: CGFloat = 5.0
