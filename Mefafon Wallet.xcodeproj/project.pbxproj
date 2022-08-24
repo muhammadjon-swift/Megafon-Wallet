@@ -19,6 +19,11 @@
 		7000F15028B42DFC00153417 /* PeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F14F28B42DFC00153417 /* PeopleCell.swift */; };
 		7000F15228B42E2400153417 /* People.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F15128B42E2400153417 /* People.swift */; };
 		7000F15428B4312900153417 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F15328B4312900153417 /* Manager.swift */; };
+		7000F15D28B4FFF200153417 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7000F15C28B4FFF200153417 /* SDWebImage */; };
+		7000F15F28B4FFF200153417 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7000F15E28B4FFF200153417 /* SDWebImageMapKit */; };
+		7000F16128B5EDA700153417 /* DataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F16028B5EDA700153417 /* DataPersistenceManager.swift */; };
+		7000F16428B5EE5400153417 /* WalletModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7000F16228B5EE5400153417 /* WalletModel.xcdatamodeld */; };
+		7000F16628B60B4000153417 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F16528B60B4000153417 /* NetworkReachability.swift */; };
 		709BF11C28AE71FF00783EF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11B28AE71FF00783EF6 /* AppDelegate.swift */; };
 		709BF11E28AE71FF00783EF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11D28AE71FF00783EF6 /* SceneDelegate.swift */; };
 		709BF12028AE71FF00783EF6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11F28AE71FF00783EF6 /* HomeViewController.swift */; };
@@ -40,6 +45,9 @@
 		7000F14F28B42DFC00153417 /* PeopleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleCell.swift; sourceTree = "<group>"; };
 		7000F15128B42E2400153417 /* People.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = People.swift; sourceTree = "<group>"; };
 		7000F15328B4312900153417 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		7000F16028B5EDA700153417 /* DataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceManager.swift; sourceTree = "<group>"; };
+		7000F16328B5EE5400153417 /* WalletModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel.xcdatamodel; sourceTree = "<group>"; };
+		7000F16528B60B4000153417 /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		709BF11828AE71FF00783EF6 /* Mefafon Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mefafon Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		709BF11B28AE71FF00783EF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		709BF11D28AE71FF00783EF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7000F15F28B4FFF200153417 /* SDWebImageMapKit in Frameworks */,
+				7000F15D28B4FFF200153417 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,8 +95,11 @@
 			isa = PBXGroup;
 			children = (
 				7000F14328B2B5DA00153417 /* APICaller.swift */,
+				7000F16528B60B4000153417 /* NetworkReachability.swift */,
 				7000F15128B42E2400153417 /* People.swift */,
 				7000F15328B4312900153417 /* Manager.swift */,
+				7000F16028B5EDA700153417 /* DataPersistenceManager.swift */,
+				7000F16228B5EE5400153417 /* WalletModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -151,6 +164,10 @@
 			dependencies = (
 			);
 			name = "Mefafon Wallet";
+			packageProductDependencies = (
+				7000F15C28B4FFF200153417 /* SDWebImage */,
+				7000F15E28B4FFF200153417 /* SDWebImageMapKit */,
+			);
 			productName = "Mefafon Wallet";
 			productReference = 709BF11828AE71FF00783EF6 /* Mefafon Wallet.app */;
 			productType = "com.apple.product-type.application";
@@ -179,6 +196,9 @@
 				Base,
 			);
 			mainGroup = 709BF10F28AE71FF00783EF6;
+			packageReferences = (
+				7000F15B28B4FFF200153417 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 709BF11928AE71FF00783EF6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -207,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				709BF12028AE71FF00783EF6 /* HomeViewController.swift in Sources */,
+				7000F16128B5EDA700153417 /* DataPersistenceManager.swift in Sources */,
 				709BF11C28AE71FF00783EF6 /* AppDelegate.swift in Sources */,
 				7000F14228B2B3AE00153417 /* TransferCollectionViewCell.swift in Sources */,
 				7000F13A28B00C5800153417 /* AccountViewController.swift in Sources */,
@@ -217,7 +238,9 @@
 				7000F14028B2384100153417 /* TransferTableViewCell.swift in Sources */,
 				7000F13628AF3F8300153417 /* HistoryViewController.swift in Sources */,
 				7000F14E28B42DA600153417 /* TransferVCQuickCollectionViewCell.swift in Sources */,
+				7000F16428B5EE5400153417 /* WalletModel.xcdatamodeld in Sources */,
 				7000F14428B2B5DA00153417 /* APICaller.swift in Sources */,
+				7000F16628B60B4000153417 /* NetworkReachability.swift in Sources */,
 				7000F13428AF3F7300153417 /* TransferViewController.swift in Sources */,
 				7000F13E28B1F1E000153417 /* Constants.swift in Sources */,
 				7000F15028B42DFC00153417 /* PeopleCell.swift in Sources */,
@@ -436,6 +459,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7000F15B28B4FFF200153417 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.13.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7000F15C28B4FFF200153417 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7000F15B28B4FFF200153417 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		7000F15E28B4FFF200153417 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7000F15B28B4FFF200153417 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		7000F16228B5EE5400153417 /* WalletModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7000F16328B5EE5400153417 /* WalletModel.xcdatamodel */,
+			);
+			currentVersion = 7000F16328B5EE5400153417 /* WalletModel.xcdatamodel */;
+			path = WalletModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 709BF11028AE71FF00783EF6 /* Project object */;
 }

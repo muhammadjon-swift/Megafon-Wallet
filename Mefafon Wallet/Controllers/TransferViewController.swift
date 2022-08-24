@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Network
+
 typealias PeopleDataSource = UICollectionViewDiffableDataSource<Manager.Section, People>
 
 class TransferViewController: UIViewController {
@@ -15,11 +17,16 @@ class TransferViewController: UIViewController {
     @IBOutlet weak var quickSendCollectionView: UICollectionView!
     
     private var dataSource: PeopleDataSource!
+    var networkIsOff = true
     
     var theViewModels = [ItemsCollectionViewCellViewModel]()
     var items = [Items]()
+    var network = NetworkReachability()
     
+    var localItems = [LocalItem]()
+    var theLocalViewModels = [LocalItemsCollectionViewCellViewModel]()
     
+    //MARK: - UITableView Stored properties, sourses for cells
     struct Service {
         let title: String
         let imageName: String
@@ -34,21 +41,22 @@ class TransferViewController: UIViewController {
     Service(title: "Mobile Sevices", imageName: "iphone", color: UIColor(hexString: "4C4EDC")!),
     Service(title: "Gosuslugi", imageName: "mail.stack", color: UIColor(hexString: "4C4EDC")!),
     ]
-
     
+    //MARK: - ViewDidload
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Core Data Path
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        print(urls)
+        
+        // Checking the network Status
+        if network.isNetworkAvailable() {
+            self.networkIsOff = false
+            print("NEtwork is avabile")
+        }
+        // Setup UI
         setupView()
-        
-        paymentsTableVIew.delegate = self
-        paymentsTableVIew.dataSource = self
-        paymentsTableVIew.rowHeight = 60
-        
-        paymentsCollectionView.delegate = self
-        paymentsCollectionView.dataSource = self
-        
-        
-        quickSendCollectionView.delegate = self
+
         //MARK: - APICaller implemation
         APICaller.shared.fetchData { [weak self] result in
             switch result {
@@ -60,22 +68,47 @@ class TransferViewController: UIViewController {
                 DispatchQueue.main.async {
                     self?.paymentsCollectionView.reloadData()
                 }
+                
             case .failure(let error):
+                // Loads Items from Core Data in case if network is off
+                DataPersistenceManager.shared.fetchingItemsFromDataBase { result in
+                    switch result {
+                    case .success(let localItem):
+                        self?.localItems = localItem
+                        self?.theLocalViewModels = localItem.compactMap({LocalItemsCollectionViewCellViewModel(title: $0.title ?? "Someting", imagePath: $0.imagePath ?? "https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/ATF_720x720_8c45f72443.png?w=3840&q=90")})
+                        
+                        DispatchQueue.main.async {
+                            self?.paymentsCollectionView.reloadData()
+                        }
+                        
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
                 print(error)
             }
         }
+        
     }
     
+    
     private func setupView() {
-        
         quickSendCollectionView.collectionViewLayout = configureCollectionViewLayout()
         configureDataSource()
         configureSnapshot()
+        
+        paymentsTableVIew.delegate = self
+        paymentsTableVIew.dataSource = self
+        paymentsTableVIew.rowHeight = 60
+        
+        paymentsCollectionView.delegate = self
+        paymentsCollectionView.dataSource = self
+        
+        quickSendCollectionView.delegate = self
     }
-    
 
 }
-
+//MARK: - quickSendCollectionView - Composonal Layout Section
 extension TransferViewController {
     func configureCollectionViewLayout() -> UICollectionViewCompositionalLayout {
         let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
@@ -115,8 +148,7 @@ extension TransferViewController {
     }
 }
 
-// MARK: - Diffable Data Source -
-
+// MARK: - quickSendCollectionView - Diffable Data Source
 extension TransferViewController {
     
     func configureDataSource() {
@@ -142,7 +174,6 @@ extension TransferViewController {
         }
     }
     
-    
     func configureSnapshot() {
         var currentSnapshot = NSDiffableDataSourceSnapshot<Manager.Section, People> ()
         
@@ -159,6 +190,7 @@ extension TransferViewController {
 
 //MARK: - UITableView Delegate & Datasource Methods
 extension TransferViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
@@ -173,22 +205,29 @@ extension TransferViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-    
 }
 
-//MARK: - UICollectionView Delegate & Datasource Methods
+//MARK: - paymentsCollectionView Delegate & Datasource Methods
 extension TransferViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return theViewModels.count
+        if networkIsOff {
+            return theLocalViewModels.count
+        } else {
+            return theViewModels.count
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = paymentsCollectionView.dequeueReusableCell(withReuseIdentifier: K.TransferVCCollectionViewCell, for: indexPath) as! TransferCollectionViewCell
-        cell.configure(with: theViewModels[indexPath.row])
+        if networkIsOff {
+            cell.configureLocalData(with: theLocalViewModels[indexPath.row])
+        } else {
+            cell.configure(with: theViewModels[indexPath.row])
+        }
         
-        //MARK: - Just to make corners rounded and add shadow
+        //Just to make corners rounded and add shadow
         let cornerRadius: CGFloat = 5.0
         cell.contentView.layer.cornerRadius = cornerRadius
         cell.contentView.layer.masksToBounds = true;
@@ -202,6 +241,5 @@ extension TransferViewController: UICollectionViewDelegate, UICollectionViewData
         
         return cell
     }
-    
     
 }

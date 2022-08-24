@@ -32,7 +32,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.HomeVCCollectionViewCell , for: indexPath) as! MyCollectionViewCell
         cell.setup(image: images[indexPath.row])
         
-        //MARK: - Just to make corners rounded and add shadow
+        // Just to make corners rounded and add shadow
         let cornerRadius: CGFloat = 5.0
         cell.contentView.layer.cornerRadius = cornerRadius
         cell.contentView.layer.masksToBounds = true;

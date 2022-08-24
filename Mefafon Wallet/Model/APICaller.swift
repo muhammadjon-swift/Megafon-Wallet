@@ -15,6 +15,7 @@ class APICaller {
     
     func fetchData(userCompletionHandler: @escaping (Result<[Items], Error>) -> Void) {
         let url = URL(string: API)
+        
         let sesson = URLSession(configuration: .default)
         let task = sesson.dataTask(with: url!) { data, response, error in
             if error != nil {

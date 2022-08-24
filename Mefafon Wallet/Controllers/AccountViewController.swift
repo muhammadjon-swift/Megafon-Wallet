@@ -38,7 +38,7 @@ extension AccountViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = savingsCollectionView.dequeueReusableCell(withReuseIdentifier: K.AccountVCCollectionViewCell, for: indexPath)
         
-        //MARK: - Just to make corners rounded and add shadow
+        // Just to make corners rounded and add shadow
         let cornerRadius: CGFloat = 5.0
         cell.contentView.layer.cornerRadius = cornerRadius
         cell.contentView.layer.masksToBounds = true;

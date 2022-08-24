@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ItemsCollectionViewCellViewModel {
     let description: String
@@ -17,26 +18,44 @@ class ItemsCollectionViewCellViewModel {
     }
 }
 
+class LocalItemsCollectionViewCellViewModel {
+    let title: String
+    let imagePath : String
+    
+    init (title: String, imagePath: String) {
+        self.title = title
+        self.imagePath = imagePath
+    }
+}
+
 class TransferCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var itemDescriptionLabel: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
     
     func configure(with viewModel: ItemsCollectionViewCellViewModel) {
+        print("It was called")
+        let url =  URL(string: viewModel.imageURL)
         itemDescriptionLabel.text = viewModel.description
+        // SDImage downloads and caches the image
+        itemImage.sd_setImage(with: url)
         
-        // Prosses Image
-        if let url = URL(string: (viewModel.imageURL)) {
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                guard let data = data, error == nil else { return }
+        // Downloads and stores the API data in Core Data 
+        DataPersistenceManager.shared.downloadItemsWith(model: viewModel) { result in
+            switch result {
+            case .success(): break
                 
-                DispatchQueue.main.async { /// execute on main thread
-                    self.itemImage.image = UIImage(data: data)
-                }
+            case .failure(let error):
+                print(error.localizedDescription)
             }
-            task.resume()
         }
     }
-
+    
+    func configureLocalData(with viewModel: LocalItemsCollectionViewCellViewModel) {
+        let url =  URL(string: viewModel.imagePath )
+        itemDescriptionLabel.text = viewModel.title
+        // SDImage downloads and caches the image
+        itemImage.sd_setImage(with: url)
+    }
 
 }
