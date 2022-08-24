@@ -33,6 +33,8 @@ class TransferCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemDescriptionLabel: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
     
+    let refreshManager = RefreshManager.shared
+    
     func configure(with viewModel: ItemsCollectionViewCellViewModel) {
         print("It was called")
         let url =  URL(string: viewModel.imageURL)
@@ -49,6 +51,10 @@ class TransferCollectionViewCell: UICollectionViewCell {
                 print(error.localizedDescription)
             }
         }
+        
+        refreshManager.loadDataIfNeeded() { success in
+                    print(success)
+        }
     }
     
     func configureLocalData(with viewModel: LocalItemsCollectionViewCellViewModel) {
@@ -56,6 +62,7 @@ class TransferCollectionViewCell: UICollectionViewCell {
         itemDescriptionLabel.text = viewModel.title
         // SDImage downloads and caches the image
         itemImage.sd_setImage(with: url)
+        
     }
 
 }

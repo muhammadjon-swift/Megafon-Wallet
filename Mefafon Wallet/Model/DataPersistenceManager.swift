@@ -34,9 +34,9 @@ class DataPersistenceManager {
         
         do {
             try context.save()
-//        Note: The uniqueness is checked when you do managedObjectContext.save() not while you're just adding objects to the managed object.
-//
-//        NSMergeByPropertyObjectTrumpMergePolicy is just one of the merge policies, which overwrites the old value with the new one. You might want to check the documentation for other options.
+            //        Note: The uniqueness is checked when you do managedObjectContext.save() not while you're just adding objects to the managed object.
+            //
+            //        NSMergeByPropertyObjectTrumpMergePolicy is just one of the merge policies, which overwrites the old value with the new one. You might want to check the documentation for other options.
             context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
             
             completion(.success(()))
@@ -62,23 +62,44 @@ class DataPersistenceManager {
             
             let data = try context.fetch(request)
             completion(.success(data))
-//            // delete aall atrubute values in an Entity
-//            // Create Fetch Request
-//            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LocalItem")
-//
-//            // Create Batch Delete Request
-//            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-//
-//            do {
-//                try context.execute(batchDeleteRequest)
-//
-//            } catch {
-//                // Error Handling
-//            }
+            //            // delete aall atrubute values in an Entity
+            //            // Create Fetch Request
+            //            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LocalItem")
+            //
+            //            // Create Batch Delete Request
+            //            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            //
+            //            do {
+            //                try context.execute(batchDeleteRequest)
+            //
+            //            } catch {
+            //                // Error Handling
+            //            }
             
             
         } catch {
             completion(.failure(DatabasError.failedToFetchData))
+        }
+    }
+    
+    func deleteEveryThingInAtributes() {
+        // delete aall atrubute values in an Entity
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        // Create Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LocalItem")
+        
+        // Create Batch Delete Request
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try context.execute(batchDeleteRequest)
+            
+        } catch {
+            // Error Handling
         }
     }
 }

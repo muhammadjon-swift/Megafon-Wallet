@@ -24,6 +24,7 @@
 		7000F16128B5EDA700153417 /* DataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F16028B5EDA700153417 /* DataPersistenceManager.swift */; };
 		7000F16428B5EE5400153417 /* WalletModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7000F16228B5EE5400153417 /* WalletModel.xcdatamodeld */; };
 		7000F16628B60B4000153417 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F16528B60B4000153417 /* NetworkReachability.swift */; };
+		7000F16828B6A9C000153417 /* RefreshManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F16728B6A9C000153417 /* RefreshManager.swift */; };
 		709BF11C28AE71FF00783EF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11B28AE71FF00783EF6 /* AppDelegate.swift */; };
 		709BF11E28AE71FF00783EF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11D28AE71FF00783EF6 /* SceneDelegate.swift */; };
 		709BF12028AE71FF00783EF6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11F28AE71FF00783EF6 /* HomeViewController.swift */; };
@@ -48,6 +49,7 @@
 		7000F16028B5EDA700153417 /* DataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceManager.swift; sourceTree = "<group>"; };
 		7000F16328B5EE5400153417 /* WalletModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel.xcdatamodel; sourceTree = "<group>"; };
 		7000F16528B60B4000153417 /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
+		7000F16728B6A9C000153417 /* RefreshManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshManager.swift; sourceTree = "<group>"; };
 		709BF11828AE71FF00783EF6 /* Mefafon Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mefafon Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		709BF11B28AE71FF00783EF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		709BF11D28AE71FF00783EF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			children = (
 				7000F14328B2B5DA00153417 /* APICaller.swift */,
 				7000F16528B60B4000153417 /* NetworkReachability.swift */,
+				7000F16728B6A9C000153417 /* RefreshManager.swift */,
 				7000F15128B42E2400153417 /* People.swift */,
 				7000F15328B4312900153417 /* Manager.swift */,
 				7000F16028B5EDA700153417 /* DataPersistenceManager.swift */,
@@ -230,6 +233,7 @@
 				7000F16128B5EDA700153417 /* DataPersistenceManager.swift in Sources */,
 				709BF11C28AE71FF00783EF6 /* AppDelegate.swift in Sources */,
 				7000F14228B2B3AE00153417 /* TransferCollectionViewCell.swift in Sources */,
+				7000F16828B6A9C000153417 /* RefreshManager.swift in Sources */,
 				7000F13A28B00C5800153417 /* AccountViewController.swift in Sources */,
 				7000F15428B4312900153417 /* Manager.swift in Sources */,
 				7000F13828AFF1F600153417 /* MyCollectionViewCell.swift in Sources */,
