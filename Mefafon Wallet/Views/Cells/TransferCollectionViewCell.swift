@@ -40,7 +40,13 @@ class TransferCollectionViewCell: UICollectionViewCell {
         let url =  URL(string: viewModel.imageURL)
         itemDescriptionLabel.text = viewModel.description
         // SDImage downloads and caches the image
+        itemImage.sd_imageIndicator = SDWebImageActivityIndicator.white
+        itemImage.sd_imageIndicator = SDWebImageProgressIndicator.default
+        
+        itemImage.sd_imageTransition = .fade
         itemImage.sd_setImage(with: url)
+        
+      
         
         // Downloads and stores the API data in Core Data 
         DataPersistenceManager.shared.downloadItemsWith(model: viewModel) { result in
@@ -61,6 +67,10 @@ class TransferCollectionViewCell: UICollectionViewCell {
         let url =  URL(string: viewModel.imagePath )
         itemDescriptionLabel.text = viewModel.title
         // SDImage downloads and caches the image
+        itemImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        itemImage.sd_imageIndicator = SDWebImageProgressIndicator.default
+        
+        itemImage.sd_imageTransition = .fade
         itemImage.sd_setImage(with: url)
         
     }

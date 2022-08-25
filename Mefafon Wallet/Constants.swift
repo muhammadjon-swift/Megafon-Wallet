@@ -12,4 +12,5 @@ struct K {
     static let HistoryVCTableViewCell = "transactionsCell"
     static let TransferVCTableViewCell = "paymentTableViewCell"
     static let TransferVCCollectionViewCell = "paymentsCollectionViewCell"
+    static let InternetServiceItemsViewController = "InternetServiceItemsCell"
 }

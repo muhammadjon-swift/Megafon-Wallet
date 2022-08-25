@@ -42,7 +42,6 @@ class TransferViewController: UIViewController {
     Service(title: "Gosuslugi", imageName: "mail.stack", color: UIColor(hexString: "4C4EDC")!),
     ]
     
-    //MARK: - ViewDidload
     override func viewDidLoad() {
         super.viewDidLoad()
         // Core Data Path
@@ -103,7 +102,7 @@ class TransferViewController: UIViewController {
         
         paymentsCollectionView.delegate = self
         paymentsCollectionView.dataSource = self
-        
+
         quickSendCollectionView.delegate = self
     }
 
@@ -205,6 +204,12 @@ extension TransferViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "pushVC")
+        navigationController?.pushViewController(controller!, animated: true)
+    }
+    
 }
 
 //MARK: - paymentsCollectionView Delegate & Datasource Methods

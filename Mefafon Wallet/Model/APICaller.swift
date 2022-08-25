@@ -12,6 +12,7 @@ class APICaller {
     static let shared = APICaller()
     
     let API = "https://fakestoreapi.com/products"
+    let SecondAPI = "https://api.openweathermap.org/data/2.5/weather?appid=a1e151d622afdce5cfb47b1135ccae7c&units=metric"
     
     func fetchData(userCompletionHandler: @escaping (Result<[Items], Error>) -> Void) {
         let url = URL(string: API)
@@ -45,6 +46,39 @@ class APICaller {
             return nil
         }
     }
+    
+    func fetchState(userCompletionHandler: @escaping (Result<State, Error>) -> Void) {
+        let url = URL(string: SecondAPI)
+        
+        let sesson = URLSession(configuration: .default)
+        let task = sesson.dataTask(with: url!) { data, response, error in
+            if error != nil {
+                print("An Error while connecting")
+                userCompletionHandler(.failure(error!))
+                return
+        }
+            if let safeData = data {
+                let parsedData = self.parseJSONS(safeData)
+                if parsedData != nil {
+                    userCompletionHandler(.success(parsedData!))
+                }
+            }
+            
+        }
+        task.resume()
+    }
+    
+    func parseJSONS(_ data: Data) -> State? {
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try decoder.decode(State.self, from: data)
+            return decodedData
+        } catch {
+            print("ERRRROR decoding data")
+            print(error)
+            return nil
+        }
+    }
 }
 
 
@@ -53,5 +87,12 @@ class APICaller {
 struct Items: Codable {
     let description: String
     let image: String
+    let price: Float
+//    let count: Int
+    let title: String
+}
+
+struct State: Codable {
+    let cod: String
 }
 
