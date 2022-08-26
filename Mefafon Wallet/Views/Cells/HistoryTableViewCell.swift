@@ -14,13 +14,15 @@ class ProductsHistoryTableViewCellViewModel {
     let rating: Float
     let price: Int
     let brand: String
+    let discountPercentage: Float
     
-    init(title: String, thumbnail:String, rating: Float, price: Int, brand: String) {
+    init(title: String, thumbnail:String, rating: Float, price: Int, brand: String, discountPercentage: Float) {
         self.title = title
         self.thumbnail = thumbnail
         self.rating = rating
         self.price = price
         self.brand = brand
+        self.discountPercentage = discountPercentage
     }
     
 }

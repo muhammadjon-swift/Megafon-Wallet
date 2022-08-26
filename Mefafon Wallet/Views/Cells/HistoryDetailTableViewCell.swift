@@ -9,6 +9,9 @@ import UIKit
 
 class HistoryDetailTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var infoFromAPI: UILabel!
+    @IBOutlet weak var detailDescription: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

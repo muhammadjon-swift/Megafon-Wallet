@@ -27,7 +27,7 @@ class HistoryViewController: UIViewController {
             case .success(let products):
                 self.products = products
                 
-                self.theViewModels = products.compactMap({ProductsHistoryTableViewCellViewModel(title: $0.title, thumbnail: $0.thumbnail, rating: $0.rating, price: $0.price, brand: $0.brand)})
+                self.theViewModels = products.compactMap({ProductsHistoryTableViewCellViewModel(title: $0.title, thumbnail: $0.thumbnail, rating: $0.rating, price: $0.price, brand: $0.brand, discountPercentage: $0.discountPercentage)})
                 
                 DispatchQueue.main.async {
                     self.transactionsTableView.reloadData()
@@ -67,7 +67,10 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "transactionDetailVC" {
             let indexPathh = transactionsTableView.indexPathForSelectedRow
             let destinationVC = segue.destination as! HistoryDetailsViewController
-            destinationVC.theImageURL = products[indexPathh!.row].thumbnail
+//            destinationVC.theImageURL = products[indexPathh!.row].thumbnail
+            destinationVC.selectedProduct = products[indexPathh!.row]
+            
+
         }
     
     
