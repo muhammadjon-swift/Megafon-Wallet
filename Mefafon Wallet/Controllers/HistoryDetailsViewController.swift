@@ -15,9 +15,26 @@ class HistoryDetailsViewController: UIViewController {
     
     var selectedProduct: Products?
     
+    var data = [String]()
+    var arrayDescriptions: [String] = [
+        "Name",
+        "BrandName",
+        "Price",
+        "DiscountPercentage",
+        "Rating",
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var infoFromAPIArray: [String] = [
+            selectedProduct!.title,
+            selectedProduct!.brand,
+            "\(selectedProduct!.price)",
+            "\(selectedProduct!.discountPercentage)%",
+            "\(selectedProduct!.rating)",
+        ]
+        data = infoFromAPIArray
         let url = URL(string: selectedProduct!.thumbnail)
         productImage.sd_setImage(with: url)
         
@@ -43,13 +60,13 @@ class HistoryDetailsViewController: UIViewController {
 extension HistoryDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = detailtableView.dequeueReusableCell(withIdentifier: "detailVCTableViewCell", for: indexPath) as! HistoryDetailTableViewCell
-        cell.infoFromAPI.text = selectedProduct?.title
-        
+        cell.infoFromAPI.text = data[indexPath.row]
+        cell.detailDescription?.text = arrayDescriptions[indexPath.row]
         return cell
     }
     
