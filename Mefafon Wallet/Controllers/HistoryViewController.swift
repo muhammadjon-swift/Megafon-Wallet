@@ -11,8 +11,8 @@ class HistoryViewController: UIViewController {
 
     @IBOutlet weak var transactionsTableView: UITableView!
     
-    var theViewModels = [ItemsHistoryTableViewCellViewModel]()
-    var items = [Items]()
+    var theViewModels = [ProductsHistoryTableViewCellViewModel]()
+    var products = [Products]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +22,12 @@ class HistoryViewController: UIViewController {
         
         transactionsTableView.rowHeight = 70
         
-        APICaller.shared.fetchData { result in
+        APICaller.shared.fetchProducts { result in
             switch result {
-            case .success(let items):
-                self.items = items
+            case .success(let products):
+                self.products = products
                 
-                self.theViewModels = items.compactMap({ItemsHistoryTableViewCellViewModel(title: $0.title, imageURL: $0.image, price: $0.price)})
+                self.theViewModels = products.compactMap({ProductsHistoryTableViewCellViewModel(title: $0.title, thumbnail: $0.thumbnail, rating: $0.rating, price: $0.price, brand: $0.brand)})
                 
                 DispatchQueue.main.async {
                     self.transactionsTableView.reloadData()
@@ -59,9 +59,20 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         performSegue(withIdentifier: "transactionDetailVC", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "transactionDetailVC" {
+            let indexPathh = transactionsTableView.indexPathForSelectedRow
+            let destinationVC = segue.destination as! HistoryDetailsViewController
+            destinationVC.theImageURL = products[indexPathh!.row].thumbnail
+        }
     
+    
+    
+    
+}
     
 }

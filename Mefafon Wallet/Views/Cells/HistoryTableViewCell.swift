@@ -8,17 +8,21 @@
 import UIKit
 import SDWebImage
 
-class ItemsHistoryTableViewCellViewModel {
+class ProductsHistoryTableViewCellViewModel {
     let title: String
-    let imageURL : String
-    let price: Float
+    let thumbnail : String
+    let rating: Float
+    let price: Int
+    let brand: String
     
-    
-    init (title: String, imageURL: String, price: Float) {
+    init(title: String, thumbnail:String, rating: Float, price: Int, brand: String) {
         self.title = title
-        self.imageURL = imageURL
+        self.thumbnail = thumbnail
+        self.rating = rating
         self.price = price
+        self.brand = brand
     }
+    
 }
 
 class HistoryTableViewCell: UITableViewCell {
@@ -40,16 +44,18 @@ class HistoryTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(with viewModel: ItemsHistoryTableViewCellViewModel) {
+    func configure(with viewModel: ProductsHistoryTableViewCellViewModel) {
         transactionName.text = viewModel.title
         transactionInOut.text = "$\(viewModel.price)"
-        let url = URL(string: viewModel.imageURL)
+        let url = URL(string: viewModel.thumbnail)
         // SDImage downloads and caches the image
         transactionImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
         transactionImage.sd_imageIndicator = SDWebImageProgressIndicator.default
         
         transactionImage.sd_imageTransition = .fade
         transactionImage.sd_setImage(with: url)
+        transactionDateAndYear.text = viewModel.brand
+        transactionHour.text = "\(viewModel.rating)"
         
     }
 

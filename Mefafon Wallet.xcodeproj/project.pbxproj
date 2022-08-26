@@ -28,6 +28,8 @@
 		7000F16A28B7BE0400153417 /* InternetServiceItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F16928B7BE0400153417 /* InternetServiceItemsViewController.swift */; };
 		7000F16C28B7D25100153417 /* InternetServiceSelectedItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F16B28B7D25100153417 /* InternetServiceSelectedItemViewController.swift */; };
 		7000F16E28B7FDCA00153417 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F16D28B7FDCA00153417 /* HistoryTableViewCell.swift */; };
+		7000F17028B88B3000153417 /* HistoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F16F28B88B3000153417 /* HistoryDetailsViewController.swift */; };
+		7000F17228B8906200153417 /* HistoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000F17128B8906200153417 /* HistoryDetailTableViewCell.swift */; };
 		709BF11C28AE71FF00783EF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11B28AE71FF00783EF6 /* AppDelegate.swift */; };
 		709BF11E28AE71FF00783EF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11D28AE71FF00783EF6 /* SceneDelegate.swift */; };
 		709BF12028AE71FF00783EF6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709BF11F28AE71FF00783EF6 /* HomeViewController.swift */; };
@@ -56,6 +58,8 @@
 		7000F16928B7BE0400153417 /* InternetServiceItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetServiceItemsViewController.swift; sourceTree = "<group>"; };
 		7000F16B28B7D25100153417 /* InternetServiceSelectedItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetServiceSelectedItemViewController.swift; sourceTree = "<group>"; };
 		7000F16D28B7FDCA00153417 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		7000F16F28B88B3000153417 /* HistoryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailsViewController.swift; sourceTree = "<group>"; };
+		7000F17128B8906200153417 /* HistoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailTableViewCell.swift; sourceTree = "<group>"; };
 		709BF11828AE71FF00783EF6 /* Mefafon Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mefafon Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		709BF11B28AE71FF00783EF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		709BF11D28AE71FF00783EF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 				7000F16928B7BE0400153417 /* InternetServiceItemsViewController.swift */,
 				7000F16B28B7D25100153417 /* InternetServiceSelectedItemViewController.swift */,
 				7000F13528AF3F8300153417 /* HistoryViewController.swift */,
+				7000F16F28B88B3000153417 /* HistoryDetailsViewController.swift */,
 				7000F13928B00C5800153417 /* AccountViewController.swift */,
 			);
 			path = Controllers;
@@ -123,6 +128,7 @@
 				7000F14128B2B3AE00153417 /* TransferCollectionViewCell.swift */,
 				7000F14D28B42DA600153417 /* TransferVCQuickCollectionViewCell.swift */,
 				7000F16D28B7FDCA00153417 /* HistoryTableViewCell.swift */,
+				7000F17128B8906200153417 /* HistoryDetailTableViewCell.swift */,
 				7000F14F28B42DFC00153417 /* PeopleCell.swift */,
 			);
 			path = Cells;
@@ -239,10 +245,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				709BF12028AE71FF00783EF6 /* HomeViewController.swift in Sources */,
+				7000F17028B88B3000153417 /* HistoryDetailsViewController.swift in Sources */,
 				7000F16128B5EDA700153417 /* DataPersistenceManager.swift in Sources */,
 				7000F16C28B7D25100153417 /* InternetServiceSelectedItemViewController.swift in Sources */,
 				709BF11C28AE71FF00783EF6 /* AppDelegate.swift in Sources */,
 				7000F14228B2B3AE00153417 /* TransferCollectionViewCell.swift in Sources */,
+				7000F17228B8906200153417 /* HistoryDetailTableViewCell.swift in Sources */,
 				7000F16828B6A9C000153417 /* RefreshManager.swift in Sources */,
 				7000F13A28B00C5800153417 /* AccountViewController.swift in Sources */,
 				7000F15428B4312900153417 /* Manager.swift in Sources */,
