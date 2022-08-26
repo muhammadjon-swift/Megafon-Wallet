@@ -60,9 +60,13 @@ class InternetServiceSelectedItemViewController: UIViewController {
     @IBAction func payButtonPressed(_ sender: UIButton) {
         numberOrID.resignFirstResponder()
         amountOfMoney.resignFirstResponder()
-        
         if theCod == "400" {
-            performSegue(withIdentifier: "successSegue", sender: self)
+            if (numberOrID.text?.isEmpty)! || (amountOfMoney.text?.isEmpty)!  {
+                numberOrID.placeholder = "Type Your Cliends ID"
+                amountOfMoney.placeholder = "Type amount of money"
+            } else {
+                performSegue(withIdentifier: "successSegue", sender: self)
+            }
         } else {
             showUIAlert()
         }
